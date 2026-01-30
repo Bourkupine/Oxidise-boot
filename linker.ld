@@ -35,6 +35,8 @@ SECTIONS
         *(.data .data.*)
     }
 
+    __global_pointer = .
+
     .bss : {
         *(.bss .bss.*)
     }
