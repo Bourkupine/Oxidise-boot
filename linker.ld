@@ -24,7 +24,7 @@ SECTIONS
 
     .text : {
         *(.text.start)
-        *(.text. .text.*)
+        *(.text .text.*)
     }
 
     .rodata : {
@@ -35,15 +35,18 @@ SECTIONS
         *(.data .data.*)
     }
 
-    __global_pointer = .
+    __global_pointer = .;
 
+    __bss_start = .;
     .bss : {
         *(.bss .bss.*)
     }
+    __bss_end = .;
 
     /*  align for stack */
     . = ALIGN(4096);
-    __stack_start = . 
-    __stack_end = __stack_start + 0x80000;
+    __stack_start = .;
+    . = . + 0x80000; 
+    __stack_end = .;
     
 }
